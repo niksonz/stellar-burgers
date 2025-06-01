@@ -1,5 +1,5 @@
 import { FC, useMemo } from 'react';
-import { TConstructorIngredient } from '@utils-types';
+import { TConstructorIngredient, TIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
 import { useDispatch, useSelector } from '@store';
 import { useNavigate } from 'react-router-dom';
@@ -11,7 +11,13 @@ import {
 } from '../../services/slices/constructorSlice/constructorSlice';
 import { getUserState } from '../../services/slices/userSlice/userSlice';
 
+import { useAppDispatch, useAppSelector } from '../../services/store';
+import { fetchOrderBurger, resetOrderModalData } from '../../slices/orderSlice';
+import { useNavigate } from 'react-router-dom';
+import { resetConstructor } from '../../slices/burgerConstructorSlice';
+
 export const BurgerConstructor: FC = () => {
+<<<<<<< HEAD
   const navigate = useNavigate();
   const { constructorItems, orderModalData, orderRequest } =
     useSelector(getConstructorState);
@@ -41,6 +47,43 @@ export const BurgerConstructor: FC = () => {
   const closeOrderModal = () => {
     dispatch(setRequest(false));
     dispatch(resetModal());
+=======
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { bun, ingredients } = useAppSelector(
+    (state) => state.burgerConstructor
+  );
+  const isAuthenticated = useAppSelector((state) => state.user.isAuthenticated);
+
+  const { orderModalData, orderRequest } = useAppSelector(
+    (state) => state.order
+  );
+
+  const constructorItems = {
+    bun: bun ?? null,
+    ingredients: ingredients ?? []
+  };
+
+  const onOrderClick = async () => {
+    if (!constructorItems.bun || orderRequest) {
+      return;
+    }
+
+    if (!isAuthenticated) return navigate('/login');
+
+    const order = [
+      constructorItems.bun._id,
+      ...constructorItems.ingredients.map((ingredient) => ingredient._id),
+      constructorItems.bun._id
+    ];
+
+    await dispatch(fetchOrderBurger(order));
+    dispatch(resetConstructor());
+  };
+
+  const closeOrderModal = () => {
+    dispatch(resetOrderModalData());
+>>>>>>> a7e39045a1a65159b7b4f219ce84555adaa323c6
   };
 
   const price = useMemo(

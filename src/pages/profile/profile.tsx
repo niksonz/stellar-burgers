@@ -1,5 +1,6 @@
 import { ProfileUI } from '@ui-pages';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
+<<<<<<< HEAD
 import { useSelector, useDispatch } from '@store';
 import {
   getUser,
@@ -17,10 +18,18 @@ export const Profile: FC = () => {
     name: data?.name || '',
     email: data?.email || ''
   };
+=======
+import { useAppDispatch, useAppSelector } from '../../services/store';
+import { fetchUpdateUser } from '../../slices/userSlice';
+
+export const Profile: FC = () => {
+  const user = useAppSelector((state) => state.user.user);
+  const dispatch = useAppDispatch();
+>>>>>>> a7e39045a1a65159b7b4f219ce84555adaa323c6
 
   const [formValue, setFormValue] = useState({
-    name: user.name,
-    email: user.email,
+    name: user?.name || '',
+    email: user?.email || '',
     password: ''
   });
 
@@ -39,8 +48,12 @@ export const Profile: FC = () => {
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
+<<<<<<< HEAD
     dispatch(updateUser(formValue));
     dispatch(getUser());
+=======
+    dispatch(fetchUpdateUser(formValue));
+>>>>>>> a7e39045a1a65159b7b4f219ce84555adaa323c6
   };
 
   if (loading) {
@@ -50,8 +63,8 @@ export const Profile: FC = () => {
   const handleCancel = (e: SyntheticEvent) => {
     e.preventDefault();
     setFormValue({
-      name: user.name,
-      email: user.email,
+      name: user?.name || '',
+      email: user?.email || '',
       password: ''
     });
   };

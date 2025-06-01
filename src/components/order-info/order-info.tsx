@@ -2,6 +2,7 @@ import { FC, useEffect, useMemo } from 'react';
 import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient } from '@utils-types';
+<<<<<<< HEAD
 import { useSelector, useDispatch } from '@store';
 import { useParams } from 'react-router-dom';
 import {
@@ -19,6 +20,25 @@ export const OrderInfo: FC = () => {
   useEffect(() => {
     dispatch(getOrderByNumber(number));
   }, []);
+=======
+import { useAppDispatch, useAppSelector } from '../../services/store';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { fetchOrderByNumber } from '../../slices/orderSlice';
+import { Modal } from '../modal';
+
+export const OrderInfo: FC<{ title?: string }> = ({ title }) => {
+  const { number } = useParams<{ number: string }>();
+  const { ingredients } = useAppSelector((state) => state.ingredients);
+  const orderData = useAppSelector((state) => state.order.orderModalData);
+  const isLoading = useAppSelector((state) => state.order.isLoading);
+  const location = useLocation();
+  const isModalOpen = location.state?.background;
+
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchOrderByNumber(Number(number)));
+  }, [dispatch]);
+>>>>>>> a7e39045a1a65159b7b4f219ce84555adaa323c6
 
   const orderInfo = useMemo(() => {
     if (!orderByNumberResponse || !ingredients.length) return null;
@@ -65,5 +85,13 @@ export const OrderInfo: FC = () => {
     return <Preloader />;
   }
 
-  return <OrderInfoUI orderInfo={orderInfo} />;
+  return isLoading ? (
+    <Preloader />
+  ) : (
+    <OrderInfoUI
+      orderInfo={orderInfo}
+      isModalOpen={!!isModalOpen}
+      title={title}
+    />
+  );
 };
