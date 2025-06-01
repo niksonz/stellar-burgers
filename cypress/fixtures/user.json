@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "user": {
+    "email": "space_explorer@stellar.com",
+    "name": "SpaceExplorer42"
+  },
+  "accessToken": "test_access_token_789",
+  "refreshToken": "test_refresh_token_456"
+}
