@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "success": true,
   "user": {
     "email": "space_explorer@stellar.com",
@@ -6,4 +7,13 @@
   },
   "accessToken": "test_access_token_789",
   "refreshToken": "test_refresh_token_456"
+=======
+  "user": {
+    "email": "testadmin@example.com",
+    "name": "test"
+  },
+  "accessToken": "exampleAccessToken",
+  "refreshToken": "exampleRefreshToken",
+  "success": true
+>>>>>>> 36a7110ee045e5115498695bf78e858e83e62b82
 }
