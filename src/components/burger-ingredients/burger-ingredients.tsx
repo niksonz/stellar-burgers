@@ -8,19 +8,11 @@ import { getIngredientState } from '../../services/slices/ingredientSlice/ingred
 import { useAppSelector } from '../../services/store';
 
 export const BurgerIngredients: FC = () => {
-<<<<<<< HEAD
   const { ingredients } = useSelector(getIngredientState);
 
   const buns = ingredients.filter((i) => i.type === 'bun');
   const mains = ingredients.filter((i) => i.type === 'main');
   const sauces = ingredients.filter((i) => i.type === 'sauce');
-=======
-  const { ingredients } = useAppSelector((state) => state.ingredients);
-
-  const buns = ingredients.filter((item) => item.type === 'bun');
-  const mains = ingredients.filter((item) => item.type === 'main');
-  const sauces = ingredients.filter((item) => item.type === 'sauce');
->>>>>>> a7e39045a1a65159b7b4f219ce84555adaa323c6
 
   const [currentTab, setCurrentTab] = useState<TTabMode>('bun');
   const titleBunRef = useRef<HTMLHeadingElement>(null);
