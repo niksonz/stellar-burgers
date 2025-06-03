@@ -1,0 +1,47 @@
+{
+  "success": true,
+  "name": "Stellar Alpha Burger",
+  "order": {
+    "ingredients": [
+      {
+        "_id": "643d69a5c3f7b9001cfa0948",
+        "name": "Кристаллы марсианских альфа-сахаридов",
+        "type": "main",
+        "proteins": 234,
+        "fat": 432,
+        "carbohydrates": 111,
+        "calories": 189,
+        "price": 762,
+        "image": "https://code.s3.yandex.net/react/code/core.png",
+        "image_mobile": "https://code.s3.yandex.net/react/code/core-mobile.png",
+        "image_large": "https://code.s3.yandex.net/react/code/core-large.png"
+      },
+      {
+        "_id": "643d69a5c3f7b9001cfa0947",
+        "name": "Плоды Фалленианского дерева",
+        "type": "main",
+        "proteins": 20,
+        "fat": 5,
+        "carbohydrates": 55,
+        "calories": 77,
+        "price": 874,
+        "image": "https://code.s3.yandex.net/react/code/sp_1.png",
+        "image_mobile": "https://code.s3.yandex.net/react/code/sp_1-mobile.png",
+        "image_large": "https://code.s3.yandex.net/react/code/sp_1-large.png"
+      }
+    ],
+    "_id": "7734d45597ede0001d066f8d",
+    "owner": {
+      "name": "SpaceExplorer42",
+      "email": "space_explorer@stellar.com",
+      "createdAt": "2024-04-03T16:45:22.278Z",
+      "updatedAt": "2024-04-20T16:45:22.411Z"
+    },
+    "status": "done",
+    "name": "Stellar Alpha Burger",
+    "createdAt": "2024-04-20T16:45:22.782Z",
+    "updatedAt": "2024-04-20T16:45:23.415Z",
+    "number": 47291,
+    "price": 1636
+  }
+}

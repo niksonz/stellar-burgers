@@ -11,7 +11,7 @@ import { OrderStatus } from '@components';
 
 export const OrderInfoUI: FC<OrderInfoUIProps> = memo(({ orderInfo }) => (
   <div className={styles.wrap}>
-    <h3 className={`text text_type_main-medium  pb-3 pt-10 ${styles.header}`}>
+    <h3 className={`text text_type_main-medium pb-3 pt-10 ${styles.header}`}>
       {orderInfo.name}
     </h3>
     <OrderStatus status={orderInfo.status} />
@@ -27,25 +27,27 @@ export const OrderInfoUI: FC<OrderInfoUIProps> = memo(({ orderInfo }) => (
                 alt={item.name}
               />
             </div>
-          </div>
-          <span className='text text_type_main-default pl-4'>{item.name}</span>
-          <span
-            className={`text text_type_digits-default pl-4 pr-4 ${styles.quantity}`}
-          >
-            {item.count} x {item.price}
-          </span>
-          <CurrencyIcon type={'primary'} />
-        </li>
-      ))}
-    </ul>
-    <div className={styles.bottom}>
-      <p className='text text_type_main-default text_color_inactive'>
-        <FormattedDate date={orderInfo.date} />
-      </p>
-      <span className={`text text_type_digits-default pr-4 ${styles.total}`}>
-        {orderInfo.total}
-      </span>
-      <CurrencyIcon type={'primary'} />
+            <span className='text text_type_main-default pl-4'>
+              {item.name}
+            </span>
+            <span
+              className={`text text_type_digits-default pl-4 pr-4 ${styles.quantity}`}
+            >
+              {item.count} x {item.price}
+            </span>
+            <CurrencyIcon type={'primary'} />
+          </li>
+        ))}
+      </ul>
+      <div className={styles.bottom}>
+        <p className='text text_type_main-default text_color_inactive'>
+          <FormattedDate date={orderInfo.date} />
+        </p>
+        <span className={`text text_type_digits-default pr-4 ${styles.total}`}>
+          {orderInfo.total}
+        </span>
+        <CurrencyIcon type={'primary'} />
+      </div>
     </div>
-  </div>
-));
+  )
+);
